@@ -36,6 +36,9 @@ if(isset($_REQUEST["borrar"])) {
     if(($vector["matricula"]==$matricula) && ($vector["fecha_hora"]==$fecha_hora)){
     unset($_SESSION["multas"][$clave]);
     }
+    else{
+      echo("Multa no encontrada.");
+    }
   }
   echo("Multa borrada con exito.");
 }

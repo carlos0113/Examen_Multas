@@ -55,11 +55,39 @@ echo'Introduce los siguientes datos de la Multa<mark>(2 Puntos)<br><br>
                     </table>
         </form>';
 if(isset($_REQUEST["insertar"])) {
+  $precio_multa=0;
+  $limite=0;
+  $velocidad=$_REQUEST["velocidad"];
+  $radar=$_REQUEST["identificador"];
+  switch($radar) {
+    case 1: $limite=30;
+      if($velocidad>$limite) {
+      $precio_multa=50+(($velocidad-$limite)*10);
+    }
+      break;
+    case 2: $limite=50;
+      if($velocidad>$limite) {
+      $precio_multa=50+(($velocidad-$limite)*10);
+    }
+      break;
+    case 3: $limite=90;
+      if($velocidad>$limite) {
+      $precio_multa=50+(($velocidad-$limite)*10);
+    }
+      break;
+    case 4: $limite=100;
+      if($velocidad>$limite) {
+      $precio_multa=50+(($velocidad-$limite)*10);
+    }
+      break;
+  }
   $_SESSION["multas"]["matricula"]= ($_REQUEST["matricula"]);
-  $_SESSION["multas"]["radar"]= ($_REQUEST["identificador"]);
-  $_SESSION["multas"]["velocidad"]= ($_REQUEST["velocidad"]);
+  $_SESSION["multas"]["radar"]= $radar;
+  $_SESSION["multas"]["velocidad"]= $velocidad;
   $_SESSION["multas"]["fecha_hora"]= ($_REQUEST["fecha_hora"]);
-  $_SESSION["multas"]["pagada"]="SI";
+  $_SESSION["multas"]["pagada"]="NO";
+  $_SESSION["multas"]["cuantia"]= $precio_multa;
+  $_SESSION["multas"]["limite"]= $limite;
   echo("Multa agregada con exito.");
 }
 include 'pie.php';
