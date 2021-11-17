@@ -5,8 +5,9 @@ if (isset($_REQUEST['pagar'])) {
   $matricula=$_REQUEST["matricula"];
   $fecha_hora=$_REQUEST["fecha_hora"];
   foreach($_SESSION["multas"] as $clave=>$vector) {
-    if(($vector["matricula"]==$matricula) && ($vector["fecha_hora"]==$fecha_hora))
-    $_SESSION["multas"]["pagada"]="SI";
+    if(($vector["matricula"]==$matricula) && ($vector["fecha_hora"]==$fecha_hora)){
+    $_SESSION["multas"][$clave]["pagada"]="SI";
+    }
   }
   echo("Multa pagada con exito.");
 }

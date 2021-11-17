@@ -33,8 +33,9 @@ if(isset($_REQUEST["borrar"])) {
   $matricula=$_REQUEST["matricula"];
   $fecha_hora=$_REQUEST["fecha_hora"];
   foreach($_SESSION["multas"] as $clave=>$vector) {
-    if(($vector["matricula"]==$matricula) && ($vector["fecha_hora"]==$fecha_hora))
+    if(($vector["matricula"]==$matricula) && ($vector["fecha_hora"]==$fecha_hora)){
     unset($_SESSION["multas"][$clave]);
+    }
   }
   echo("Multa borrada con exito.");
 }

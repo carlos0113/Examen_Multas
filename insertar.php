@@ -59,6 +59,7 @@ if(isset($_REQUEST["insertar"])) {
   $_SESSION["multas"]["radar"]= ($_REQUEST["identificador"]);
   $_SESSION["multas"]["velocidad"]= ($_REQUEST["velocidad"]);
   $_SESSION["multas"]["fecha_hora"]= ($_REQUEST["fecha_hora"]);
+  $_SESSION["multas"]["pagada"]="SI";
   echo("Multa agregada con exito.");
 }
 include 'pie.php';
